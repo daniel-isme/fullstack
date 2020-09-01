@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/daniel-isme/fullstack/issues"
   },
-  "homepage": "https://github.com/daniel-isme/fullstack#readme"
+  "homepage": "https://github.com/daniel-isme/fullstack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
