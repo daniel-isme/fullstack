@@ -1,0 +1,23 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "full stack app with angular and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-isme/fullstack.git"
+  },
+  "keywords": [
+    "express",
+    "angular"
+  ],
+  "author": "daniel-isme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-isme/fullstack/issues"
+  },
+  "homepage": "https://github.com/daniel-isme/fullstack#readme"
+}
