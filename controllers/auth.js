@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const User = require('../models/User')
 
 
@@ -10,12 +11,29 @@ module.exports.login = function (req, res) {
     })
 }
 
-module.exports.register = function (req, res) {
+module.exports.register = async function (req, res) {
     // email password
-    const user = new User({
-        email: req.body.email,
-        password: req.body.password
-    })
+    const candidate = await User.findOne({email: req.body.email})
+    
+    if (candidate) {
+        // Пользователь существует, нужно отправить ошибку
+        res.status(409).json({
+            message: 'Аккаунт с таким email уже существует.'
+        })
+    } else {
+        // Нужно создать пользователя
+        const salt = bcrypt.genSaltSync(10)
+        const password = req.body.password
+        const user = new User({
+            email: req.body.email,
+            password: bcrypt.hashSync(password, salt)
+        })
 
-    user.save().then(() => console.log('user created'))
+        try {
+            await user.save()
+            res.status(201).json(user)
+        } catch (e) {
+            //TODO: Обработать ошибку
+        }
+    }
 }
