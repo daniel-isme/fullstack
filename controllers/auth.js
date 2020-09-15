@@ -8,10 +8,10 @@ module.exports.login = async function (req, res) {
     const candidate = await User.findOne({email: req.body.email})
 
     if (candidate) {
-        // Проверка пароля, пользователь существует
+        // Проверка пароля, пользователь существует.
         const passwordResult = bcrypt.compareSync(req.body.password, candidate.password)
         if (passwordResult){
-            // Генерация токена; пароли совпали
+            // Генерация токена, пароли совпали.
 
             const token = jwt.sign({
                 email: candidate.email,
